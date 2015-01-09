@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('labApps',['ngRoute','todoModule',
+angular.module('labApps',['ngRoute','ngResource','todoModule',
                           'commonModule',
                           'sportsControllers',
                           'sportsFilters',
@@ -15,6 +15,19 @@ angular.module('labApps',['ngRoute','todoModule',
 	}).when('/checkout', {
 		templateUrl : '/views/sports/checkout.html'
 	})
+	.when("/complete", {
+		templateUrl: "/views/sports/thankyou.html"
+	})
+	.when("/placeorder", {
+		controller : 'sportsStoreCtrl',
+		templateUrl: "/views/sports/placeOrder.html"
+	}).when("/login", {
+		templateUrl : "/views/sports/login.html"
+	}).when("/admin/main", {
+		templateUrl : "/views/sports/admin/main.html"
+	}).otherwise({
+		redirectTo : '/login'
+	});
 });
 
 //angular.module('appModule', [ 'ngRoute', 'appControllers' ])

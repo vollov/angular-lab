@@ -17,11 +17,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/app/')));
 
-app.all('*', midware.header);
+//app.all('*', midware.header);
 //API
-require('./api/product')(app);
+//require('./api/product')(app);
+//require('./api/auth')(app);
 
 http.createServer(app).listen(port, function(){
 	console.log('Now serving the app at http://localhost:' + port);

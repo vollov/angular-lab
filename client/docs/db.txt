@@ -1,5 +1,5 @@
 mongoimport -d bd -c product --type csv --file product.csv --headerline
-
+mongoimport -d bd -c users --type csv --file users.csv --headerline
 
 
     // callback:function(err, doc) {...};
