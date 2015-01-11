@@ -1,0 +1,90 @@
+LOAD DATA INFILE '/tmp/test.txt' INTO TABLE test IGNORE 1 LINES;
+
+Therefore, you can use the following statement:
+
+LOAD DATA LOCAL INFILE 'uniq.csv'
+INTO TABLE tblUniq
+FIELDS TERMINATED BY ','
+    ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(uniqName, uniqCity, uniqComments)
+
+============
+  uuid VARBINARY(16) UNIQUE,
+From 110E8400-E29B-11D4-A716-446655440000 to 110E8400E29B11D4A716446655440000
+INSERT INTO Table (FieldBin) VALUES (UNHEX("110E8400E29B11D4A716446655440000")
+
+INSERT INTO uuid_demo SET id=0x1e8ef774581c102cbcfef1ab81872213, name="Kekoa";
+mysql> SELECT hex(id), name FROM uuid_demo;
+====================
+use em;
+
+drop table if exists alert_g;
+drop table if exists alters;
+drop table if exists zones;
+
+CREATE TABLE alerts (
+  id int(16) unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(32) NOT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY key_name (name)
+) ENGINE=InnoDB;
+
+INSERT INTO alerts VALUES 
+(1,'alert 1','2010-08-09 04:00:00'),
+(2,'alert 2','2002-08-06 04:00:00'),
+(3,'alert 3','2002-09-06 04:00:00'),
+(4,'alert 4','2011-12-31 05:00:00'),
+(5,'alert 5','2011-12-31 05:00:00'),
+(6,'alert 6','2011-12-31 05:00:00');
+
+
+CREATE TABLE zones (
+  id int(16) unsigned NOT NULL AUTO_INCREMENT,
+  name varchar(32) NOT NULL,
+  PRIMARY KEY (id),
+--  UNIQUE KEY name (name),
+  KEY key_name (name)
+) ENGINE=InnoDB;
+
+INSERT INTO zones VALUES 
+(1,'zone 1'),
+(2,'zone 2'),
+(3,'zone 3'),
+(4,'zone 4'),
+(5,'zone 5');
+
+CREATE TABLE alert_g (
+  id int(16) unsigned NOT NULL AUTO_INCREMENT,
+  alert_id int(16) unsigned NOT NULL,
+  zone_id int(16) unsigned NOT NULL,
+  PRIMARY KEY (id),
+  KEY fk_zone_id (zone_id),
+  KEY key_alert_id (alert_id),
+CONSTRAINT alert_g_fk_alert_id FOREIGN KEY (alert_id) REFERENCES alerts (id) ON DELETE CASCADE,
+CONSTRAINT alert_g_fk_zone_id FOREIGN KEY (zone_id) REFERENCES zones (id)
+) ENGINE=InnoDB;
+
+INSERT INTO alert_g VALUES 
+(1,1,1),
+(2,2,2),
+(3,3,3),
+(4,3,4),
+(5,2,4),
+(6,4,4),
+(7,4,5),
+(8,5,1),
+(9,5,3),
+(10,6,1),
+(11,6,2);
+
+=====================================
+DROP TABLE IF EXISTS article;
+CREATE TABLE article (
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(160) NOT NULL,
+  content TEXT NOT NULL,
+  active BIT(1)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
