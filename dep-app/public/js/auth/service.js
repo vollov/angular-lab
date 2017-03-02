@@ -16,12 +16,12 @@ angular.module('auth.services', [])
 	
 	return auth;
 } ])
-.factory('testInterceptor', ['authService', function testInterceptor(authService) {
+.factory('testInterceptor', ['authService', 'API', function testInterceptor(authService, API) {
 	
 	var interceptor = {};
 	
 	interceptor.request = function(config) {
-		console.log('testInterceptor request');
+		console.log('testInterceptor request api=' + API);
 		authService.getToken();
 		return config;
 	};
